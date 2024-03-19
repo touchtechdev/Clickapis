@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+  title: Click Count Color API
+  description: An API to retrieve click count data based on color
+  version: 1.0.0
+servers:
+  - url: http://localhost:3001
+paths:
+  /insertData:
+    post:
+      summary: Insert data into the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                time:
+                  type: string
+                  format: time
+                date:
+                  type: string
+                  format: date
+                username:
+                  type: string
+                clickCounts:
+                  type: object
+                  additionalProperties:
+                    type: integer
+      responses:
+        '200':
+          description: Data inserted successfully
+        '500':
+          description: Internal server error
+  /clickCountColor:
+    get:
+      summary: Retrieve click count data based on color
+      parameters:
+        - name: color
+          in: query
+          description: Color to filter click count data
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+        '500':
+          description: Internal server error
