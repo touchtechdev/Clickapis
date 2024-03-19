@@ -1,0 +1,68 @@
+- path: "/"
+  method: GET
+  description: Retrieve click count color data
+  parameters:
+    - name: color
+      in: query
+      description: Color to filter click count data
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                description: Indicates if the request was successful
+              count:
+                type: integer
+                description: Number of clicks global
+              message:
+                type: string
+                description: Message about the operation result
+
+- path: "/"
+  method: POST
+  description: Insert data
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            time:
+              type: string
+              description: Time of the click
+            date:
+              type: string
+              description: Date of the click
+            username:
+              type: string
+              description: Username associated with the click
+            clickCounts:
+              type: object
+              description: Object containing click counts
+          required:
+            - time
+            - date
+            - username
+            - clickCounts
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                description: Indicates if the request was successful
+              message:
+                type: string
+                description: Message about the operation result
