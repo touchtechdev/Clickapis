@@ -24,7 +24,7 @@ app.use(express.json());
 //app.use(cors());
 
 // Define a route to handle GET clickCountColor requests to retrieve click count color data
-router.get('/', async (req, res) => {
+router.get('/',  (req, res) => {
     try {
       const color = req.query.color;
       // Construct the SQL query
@@ -46,7 +46,7 @@ router.get('/', async (req, res) => {
   });
 
 // Define a route to handle POST requests to insert data
-router.post('/', async (req, res) => {
+router.post('/',  (req, res) => {
     
     try {
       // Extract data from the request body
