@@ -1,17 +1,17 @@
 // Import required modules
 const express = require('express');
-const { Pool } = require('pg');
-const cors = require('cors');
+//const { Pool } = require('pg');
+//const cors = require('cors');
 const router = express.Router()
 
 // Configure PostgreSQL connection
-const pool = new Pool({
+/*const pool = new Pool({
     user: 'your_username',
     host: 'localhost',
     database: 'your_database_name',
     password: 'your_password',
     port: 5432,
-  });
+  });*/
 
 
 // Create an Express application
@@ -21,16 +21,16 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS
-app.use(cors());
+//app.use(cors());
 
 // Define a route to handle GET clickCountColor requests to retrieve click count color data
 router.get('/', async (req, res) => {
     try {
-      const color = req.query.color;
+      //const color = req.query.color;
       // Construct the SQL query
-      const query = `
+     /* const query = `
         SELECT * FROM your_table_name WHERE click_counts ->> $1 = $2
-      `;
+      `;*/
   
       // Execute the query
      // const result = await pool.query(query, ['color', color]);
@@ -50,13 +50,13 @@ router.post('/', async (req, res) => {
     
     try {
       // Extract data from the request body
-      const { time, date, username, clickCounts } = req.body;
+      //const { time, date, username, clickCounts } = req.body;
       
       // Construct the SQL query
-      const query = `
+      /*const query = `
         INSERT INTO your_table_name (time, date, username, click_counts)
         VALUES ($1, $2, $3, $4)
-      `;
+      `;*/
   
       // Execute the query
       //await pool.query(query, [time, date, username, JSON.stringify(clickCounts)]);

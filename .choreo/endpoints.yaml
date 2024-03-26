@@ -5,6 +5,6 @@ endpoints:
     port: 3000
     type: REST
     networkVisibility: Public
-    context: /
-    schemaFilePath: openapi.yml
+    context: /clickApp
+    schemaFilePath: openapi.yaml
 
