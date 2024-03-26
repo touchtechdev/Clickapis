@@ -1,7 +1,7 @@
 // Import required modules
 const express = require('express');
 const apiRoutes = require('./src/routes');
-//const cors = require('cors');
+const cors = require('cors');
 
 //test
 
@@ -9,7 +9,7 @@ const apiRoutes = require('./src/routes');
 const app = express();
 
 // Enable CORS
-//app.use(cors());
+app.use(cors());
 
 // Parse JSON bodies
 app.use(express.json());
@@ -19,7 +19,7 @@ app.use('/clickApp', apiRoutes);
 //app.use('/insertData', apiRoutes);
  
 // Start the server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

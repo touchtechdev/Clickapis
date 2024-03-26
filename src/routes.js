@@ -26,7 +26,7 @@ app.use(express.json());
 // Define a route to handle GET clickCountColor requests to retrieve click count color data
 router.get('/', async (req, res) => {
     try {
-      //const color = req.query.color;
+      const color = req.query.color;
       // Construct the SQL query
      /* const query = `
         SELECT * FROM your_table_name WHERE click_counts ->> $1 = $2
@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
   
       // Send the retrieved data as response
       //res.status(200).json({ success: true, data: result.rows });
-   res.status(200).json({ success: true, count: 333,  message: 'Number of clicks global:' });
+      res.status(200).json({ success: true, count: 333,  message: 'Number of clicks global:'});
     } catch (error) {
       // Send an error response if something goes wrong
       console.error('Error retrieving data:', error);
