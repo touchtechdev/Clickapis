@@ -28,18 +28,11 @@ paths:
           description: Color parameter to filter click count data
       responses:
         '200':
-          description: Successful response
+          description: Successful operation
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  count:
-                    type: integer
-                  message:
-                    type: string
+                $ref: "#/components/schemas/StringArray"
     post:
       summary: Insert click count data
       requestBody:
@@ -47,7 +40,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: "#/components/schemas/KeyValue"
               properties:
                 time:
                   type: string
@@ -63,24 +56,14 @@ paths:
                     type: integer
       responses:
         '200':
-          description: Successful response
+          description: Successful operation
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  message:
-                    type: string
+                $ref: "#/components/schemas/StringArray"
         '500':
           description: Internal server error
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  success:
-                    type: boolean
-                  message:
-                    type: string
+                $ref: "#/components/schemas/StringArray"
