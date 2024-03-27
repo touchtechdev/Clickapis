@@ -24,51 +24,37 @@ app.use(express.json());
 //app.use(cors());
 
 // Define a route to handle GET clickCountColor requests to retrieve click count color data
-router.get('/',  async (req, res) => {
-    try {
-      const color = req.query.color;
-      // Construct the SQL query
-     /* const query = `
-        SELECT * FROM your_table_name WHERE click_counts ->> $1 = $2
-      `;*/
-  
-      // Execute the query
-     // const result = await pool.query(query, ['color', color]);
-  
-      // Send the retrieved data as response
-      //res.status(200).json({ success: true, data: result.rows });
-      await res.status(200).json({ success: true, count: 333,  message: 'Number of clicks global:'});
-    } catch (error) {
-      // Send an error response if something goes wrong
-      console.error('Error retrieving data:', error);
-      res.status(500).json({ success: false, message: 'Internal server error' });
-    }
-  });
+router.get('/', (req, res) => {
+  const color = req.query.color;
+  // Construct the SQL query
+  /* const query = `
+    SELECT * FROM your_table_name WHERE click_counts ->> $1 = $2
+  `;*/
+
+  // Execute the query
+  // const result = await pool.query(query, ['color', color]);
+
+  // Send the retrieved data as response
+  res.status(200).json({ success: true, count: 333,  message: 'Number of clicks global:'});
+});
 
 // Define a route to handle POST requests to insert data
-router.post('/', async (req, res) => {
-    
-    try {
-      // Extract data from the request body
-      //const { time, date, username, clickCounts } = req.body;
-      
-      // Construct the SQL query
-      /*const query = `
-        INSERT INTO your_table_name (time, date, username, click_counts)
-        VALUES ($1, $2, $3, $4)
-      `;*/
-  
-      // Execute the query
-      //await pool.query(query, [time, date, username, JSON.stringify(clickCounts)]);
-  
-      // Send a successful response
-      await res.status(200).json({ success: true, message: 'Data inserted successfully routes' });
-    } catch (error) {
-      // Send an error response if something goes wrong
-      console.error('Error inserting data:', error);
-      res.status(500).json({ success: false, message: 'Internal server error' });
-    }
-  });
+router.post('/', (req, res) => {
+  // Extract data from the request body
+  //const { time, date, username, clickCounts } = req.body;
+
+  // Construct the SQL query
+  /*const query = `
+    INSERT INTO your_table_name (time, date, username, click_counts)
+    VALUES ($1, $2, $3, $4)
+  `;*/
+
+  // Execute the query
+  //await pool.query(query, [time, date, username, JSON.stringify(clickCounts)]);
+
+  // Send a successful response
+  res.status(200).json({ success: true, message: 'Data inserted successfully routes' });
+});
 
 
   module.exports = router;
