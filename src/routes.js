@@ -24,7 +24,7 @@ app.use(express.json());
 //app.use(cors());
 
 // Define a route to handle GET clickCountColor requests to retrieve click count color data
-router.get('/',  (req, res) => {
+router.get('/',  async (req, res) => {
     try {
       const color = req.query.color;
       // Construct the SQL query
@@ -37,7 +37,7 @@ router.get('/',  (req, res) => {
   
       // Send the retrieved data as response
       //res.status(200).json({ success: true, data: result.rows });
-      res.status(200).json({ success: true, count: 333,  message: 'Number of clicks global:'});
+      await res.status(200).json({ success: true, count: 333,  message: 'Number of clicks global:'});
     } catch (error) {
       // Send an error response if something goes wrong
       console.error('Error retrieving data:', error);
@@ -46,7 +46,7 @@ router.get('/',  (req, res) => {
   });
 
 // Define a route to handle POST requests to insert data
-router.post('/',  (req, res) => {
+router.post('/', async (req, res) => {
     
     try {
       // Extract data from the request body
@@ -62,7 +62,7 @@ router.post('/',  (req, res) => {
       //await pool.query(query, [time, date, username, JSON.stringify(clickCounts)]);
   
       // Send a successful response
-      res.status(200).json({ success: true, message: 'Data inserted successfully routes' });
+      await res.status(200).json({ success: true, message: 'Data inserted successfully routes' });
     } catch (error) {
       // Send an error response if something goes wrong
       console.error('Error inserting data:', error);
