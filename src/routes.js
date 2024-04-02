@@ -5,6 +5,8 @@
 import express from "express";
 //const { Pool } = require('pg');
 import cors from "cors";
+
+
 //const cors = require('cors');
 //const router = express.Router()
 
@@ -23,7 +25,7 @@ const app = express();
 
 // Parse JSON bodies
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 // Enable CORS
 app.use(cors());
 
