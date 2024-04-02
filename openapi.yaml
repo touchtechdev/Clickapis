@@ -16,7 +16,7 @@ tags:
   - name: ClickApi
     description: Click api 
 paths:
-  /:
+  /clickApp:
     get:
       summary: Retrieve click count of a color
       parameters:
