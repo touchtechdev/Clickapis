@@ -80,7 +80,7 @@ app.use((err, _req, res, next) => {
     return next(err);
   }
   console.error(err);
-  res.status(500);
+  res.status(503);
   res.json({ error: err.message });
 });
 
