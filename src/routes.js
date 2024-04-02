@@ -68,6 +68,26 @@ app.post("/clickApp", (req, res) => {
   res.status(200).json({ success: true, message: 'Data inserted successfully routes' });
 });
 
+// health check
+app.get("/healthz", (_, res) => {
+  return res.sendStatus(200);
+});
+
+app.use((err, _req, res, next) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+  console.error(err);
+  res.status(500);
+  res.json({ error: err.message });
+});
+
+app.use("*", (_, res) => {
+  return res
+    .status(404)
+    .json({ error: "the requested resource does not exist on this server" });
+});
+
   //module.exports = router;
 
   export default app;
