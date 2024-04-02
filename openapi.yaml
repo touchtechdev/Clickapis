@@ -1,12 +1,11 @@
 openapi: 3.0.3
 info:
-  title: Click Count API
-  description: API to retrieve and insert click count data
+  title: Click App API
+  description: API for managing click counts of different colors
   version: 1.0.0
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 1.0.0
 externalDocs:
   description: Choreo
   url: https://choreo.dev
@@ -17,53 +16,74 @@ tags:
   - name: ClickApi
     description: Click api 
 paths:
-  /ClickApp:
-    summary: Retrieve click count data
+  /clickApp:
     get:
+      summary: Retrieve click count of a color
       parameters:
         - in: query
           name: color
           schema:
             type: string
-          description: Color parameter to filter click count data
+          required: true
+          description: The color for which to retrieve the click count
       responses:
         '200':
-          description: Successful operation
+          description: Successful response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StringArray"
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates if the request was successful
+                  color:
+                    type: string
+                    description: The color for which the click count is retrieved
+                  count:
+                    type: integer
+                    description: The number of clicks for the specified color
+                  message:
+                    type: string
+                    description: A message indicating the status of the request
+
     post:
-      summary: Insert click count data
+      summary: Insert click data for all colors of a user
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/KeyValue"
+              type: object
               properties:
                 time:
                   type: string
-                  format: date-time
+                  description: The time of the click
                 date:
                   type: string
-                  format: date
+                  description: The date of the click
                 username:
                   type: string
+                  description: The username of the user
                 clickCounts:
                   type: object
-                  additionalProperties:
-                    type: integer
+                  description: Object containing click counts for different colors
+              required:
+                - time
+                - date
+                - username
+                - clickCounts
       responses:
         '200':
-          description: Successful operation
+          description: Successful response
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/StringArray"
-        '500':
-          description: Internal server error
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/StringArray"
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Indicates if the request was successful
+                  message:
+                    type: string
+                    description: A message indicating the status of the request

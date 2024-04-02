@@ -1,8 +1,12 @@
 // Import required modules
-const express = require('express');
+//import express from "express";
+//const apiRoutes = require('./src/routes');
+//const express = require('express');
+import express from "express";
 //const { Pool } = require('pg');
+import cors from "cors";
 //const cors = require('cors');
-const router = express.Router()
+//const router = express.Router()
 
 // Configure PostgreSQL connection
 /*const pool = new Pool({
@@ -21,10 +25,15 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS
-//app.use(cors());
+app.use(cors());
+
+//app.use('/clickApp', apiRoutes);
 
 // Define a route to handle GET clickCountColor requests to retrieve click count color data
-router.get('/', (req, res) => {
+//router.get('/', (req, res) => {
+
+//  GET clickCountColor requests to retrieve click count of a color data
+app.get("/clickApp/", (req, res) => {
   const color = req.query.color;
   // Construct the SQL query
   /* const query = `
@@ -35,12 +44,15 @@ router.get('/', (req, res) => {
   // const result = await pool.query(query, ['color', color]);
 
   // Send the retrieved data as response
-  res.status(200).json({ success: true, count: 333,  message: 'Number of clicks global:'});
+  res.status(200).json({ success: true, color:color, count: 333,  message: 'Number of clicks global:'});
 });
 
-// Define a route to handle POST requests to insert data
-router.post('/', (req, res) => {
-  // Extract data from the request body
+
+
+
+// POST requests to insert all colors Click data of user
+app.post("/clickApp", (req, res) => {
+// Extract data from the request body
   //const { time, date, username, clickCounts } = req.body;
 
   // Construct the SQL query
@@ -56,5 +68,6 @@ router.post('/', (req, res) => {
   res.status(200).json({ success: true, message: 'Data inserted successfully routes' });
 });
 
+  //module.exports = router;
 
-  module.exports = router;
+  export default app;

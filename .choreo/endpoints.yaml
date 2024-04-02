@@ -1,7 +1,7 @@
 version: 0.1
 
 endpoints:
-  - name: Click Count API
+  - name: Click App API
     port: 3001
     type: REST
     networkVisibility: Public
