@@ -87,3 +87,12 @@ paths:
                   message:
                     type: string
                     description: A message indicating the status of the request
+
+  /healthz:
+    summary: Healthcheck endpoint
+    get:
+      summary: Healthcheck
+      operationId: Healthcheck
+      responses:
+        "200":
+          description: Healthy response
